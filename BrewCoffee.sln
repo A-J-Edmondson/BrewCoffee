@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrewCoffee", "BrewCoffee\BrewCoffee.csproj", "{88EA070F-2815-4153-9203-D7D1B763B82F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewCoffee.Application", "BrewCoffee.Application\BrewCoffee.Application.csproj", "{38C891CC-DFFE-4666-83B3-0F272F711D23}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewCoffee.Tests.Integration", "BrewCoffee.IntegrationTests\BrewCoffee.Tests.Integration.csproj", "{4E6C4F43-CC83-43B0-9F8D-75C727142198}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewCoffee.RestAdapter", "BrewCoffee.RestAdapter\BrewCoffee.RestAdapter.csproj", "{1B65BC13-6619-4FEE-B5C1-8B9B7473AB4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewCoffee.Tests.Unit", "BrewCoffee.UnitTests\BrewCoffee.Tests.Unit.csproj", "{7932C8D9-1AEC-4103-8B3D-AABA1F094F24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{88EA070F-2815-4153-9203-D7D1B763B82F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88EA070F-2815-4153-9203-D7D1B763B82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88EA070F-2815-4153-9203-D7D1B763B82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88EA070F-2815-4153-9203-D7D1B763B82F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C891CC-DFFE-4666-83B3-0F272F711D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C891CC-DFFE-4666-83B3-0F272F711D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C891CC-DFFE-4666-83B3-0F272F711D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C891CC-DFFE-4666-83B3-0F272F711D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E6C4F43-CC83-43B0-9F8D-75C727142198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E6C4F43-CC83-43B0-9F8D-75C727142198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E6C4F43-CC83-43B0-9F8D-75C727142198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E6C4F43-CC83-43B0-9F8D-75C727142198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B65BC13-6619-4FEE-B5C1-8B9B7473AB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B65BC13-6619-4FEE-B5C1-8B9B7473AB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B65BC13-6619-4FEE-B5C1-8B9B7473AB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B65BC13-6619-4FEE-B5C1-8B9B7473AB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7932C8D9-1AEC-4103-8B3D-AABA1F094F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7932C8D9-1AEC-4103-8B3D-AABA1F094F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7932C8D9-1AEC-4103-8B3D-AABA1F094F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7932C8D9-1AEC-4103-8B3D-AABA1F094F24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
