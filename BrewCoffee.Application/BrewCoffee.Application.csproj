@@ -11,11 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Cache\out-of-coffee.json">
+    <Content Include="Cache\CoffeeMachine.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>
