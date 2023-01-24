@@ -8,6 +8,8 @@ using BrewCoffee.Application.Extensions;
 using System.IO;
 using Newtonsoft.Json;
 using BrewCoffee.Application.Exceptions;
+using Moq;
+using BrewCoffee.Application.Interfaces;
 
 namespace BrewCoffee.Tests.Application.Services;
 
@@ -17,7 +19,9 @@ public class GetBrewedCoffeeServiceTests
     public void ShouldReturnNotNullResponse_WhenCallingGetBrewedCoffee()
     {
         //Arrange
-        var service = new GetBrewedCoffeeService();
+        var mockDateExtensions = new Mock<IDateExtensions>();
+        mockDateExtensions.Setup(x => x.GetCurrentDateInMonthsAndDays()).Returns("03-02");
+        var service = new GetBrewedCoffeeService(mockDateExtensions.Object);
 
         //Act
         var result = service.GetBrewedCoffee();
@@ -31,9 +35,11 @@ public class GetBrewedCoffeeServiceTests
     public void ShouldReturnResponseWithCorrectMessageAndPreparedInTheCorrectDateFormat_WhenCallingGetBrewedCoffee()
     {
         //Arrange
+        var mockDateExtensions = new Mock<IDateExtensions>();
+        mockDateExtensions.Setup(x => x.GetCurrentDateInMonthsAndDays()).Returns("03-02");
+        var service = new GetBrewedCoffeeService(mockDateExtensions.Object);
         var expectedMessage = "Your piping hot coffee is ready";
         var expectedDateFormat = "yyyy-MM-ddTHH:mm:sszzz";
-        var service = new GetBrewedCoffeeService();
 
         //Act
         if (GetCoffeeMachineUseCount() % 5 == 0)
@@ -53,7 +59,9 @@ public class GetBrewedCoffeeServiceTests
     public void ShouldThrowOutOfCoffeeException_WhenCallingGetBrewedCoffeeForThe5thTime()
     {
         //Arrange
-        var service = new GetBrewedCoffeeService();
+        var mockDateExtensions = new Mock<IDateExtensions>();
+        mockDateExtensions.Setup(x => x.GetCurrentDateInMonthsAndDays()).Returns("03-02");
+        var service = new GetBrewedCoffeeService(mockDateExtensions.Object);
 
         //Act
         int useCount = GetCoffeeMachineUseCount();
@@ -66,6 +74,20 @@ public class GetBrewedCoffeeServiceTests
         //Assert
         Assert.Throws<OutOfCoffeeException>(() => { service.GetBrewedCoffee(); });
     }
+
+    [Fact]
+    public void ShouldThrowOutOfServiceException_WhenCallingGetBrewedCoffeeOnApril1st()
+    {
+        //Arrange
+        var mockDateExtensions = new Mock<IDateExtensions>();
+        mockDateExtensions.Setup(x => x.GetCurrentDateInMonthsAndDays()).Returns("04-01");
+        var service = new GetBrewedCoffeeService(mockDateExtensions.Object);
+
+        //Assert
+        Assert.Throws<OutOfServiceException>(() => { service.GetBrewedCoffee(); });
+    }
+
+    #region Private Methods
 
     private int GetCoffeeMachineUseCount()
     {
@@ -86,4 +108,7 @@ public class GetBrewedCoffeeServiceTests
         var coffeeMachine = JsonConvert.DeserializeObject<CoffeeMachine>(coffeeMachineData);
         return Convert.ToInt32(coffeeMachine?.UseCount);
     }
+
+    #endregion
+
 }

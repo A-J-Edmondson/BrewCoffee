@@ -31,17 +31,15 @@ namespace BrewCoffee.RestAdapter.Middleware
                 {
                     await HandleOutOfCoffeeExceptionAsync(httpContext, ex);
                 }
+                else if (ex is OutOfServiceException)
+                {
+                    await HandleOutOfServiceExceptionAsync(httpContext, ex);
+                }
                 else
                 {
                     await HandleExceptionAsync(httpContext, ex);
                 }
             }
-        }
-
-        private async Task HandleOutOfCoffeeExceptionAsync(HttpContext context, Exception exception)
-        {
-            context.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
-            await context.Response.Body.FlushAsync();
         }
 
         private async Task HandleExceptionAsync(HttpContext context, Exception exception)
@@ -56,6 +54,18 @@ namespace BrewCoffee.RestAdapter.Middleware
             };
 
             await context.Response.WriteAsync(JsonConvert.SerializeObject(problemDetails, settings: _jsonSerializerSettings));
+        }
+
+        private async Task HandleOutOfCoffeeExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
+            await context.Response.Body.FlushAsync();
+        }
+
+        private async Task HandleOutOfServiceExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.StatusCode = 418; //I'm a teapot
+            await context.Response.Body.FlushAsync();
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace BrewCoffee.Application.Exceptions
 {
-    public class OutOfCoffeeException : Exception
+    public class OutOfServiceException : Exception
     {
-        public OutOfCoffeeException(string error = "The Coffee Machine is out of Coffee.") : base(error)
+        public OutOfServiceException(string error = "The Coffee Machine is out of service today.") : base(error)
         { }
     }
 }
